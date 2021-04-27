@@ -1,9 +1,9 @@
 import { Image } from "@chakra-ui/image";
-import { Flex, HStack, Text } from "@chakra-ui/layout";
+import { Flex, Text } from "@chakra-ui/layout";
 import SwiperCore, { Navigation, Pagination, Thumbs } from "swiper/core";
 
-import { MenuItem } from "../components/Menu/MenuItem";
 import { Carousel } from "../components/Carousel";
+import { Header } from "../components/Header";
 import { Menu } from "../components/Menu";
 
 SwiperCore.use([Navigation, Pagination, Thumbs]);
@@ -16,15 +16,7 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
     >
-      <Flex
-        as="header"
-        justifyContent="center"
-        alignItems="center"
-        w="100%"
-        h="28"
-      >
-        <Image src="/images/logo.png" />
-      </Flex>
+      <Header />
       <Flex maxw="1440px" mX="auto" display="flex" flexDir="column">
         <Image src="/images/banner.png" w="100%" />
 
