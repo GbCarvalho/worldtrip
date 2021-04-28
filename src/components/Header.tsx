@@ -1,7 +1,11 @@
 import { Image } from "@chakra-ui/image";
 import { Flex } from "@chakra-ui/layout";
 
-export function Header() {
+interface HeaderProps {
+  throwBack?: string;
+}
+
+export function Header({ throwBack = null }: HeaderProps) {
   return (
     <Flex
       as="header"
@@ -9,6 +13,8 @@ export function Header() {
       alignItems="center"
       w="100%"
       h="28"
+      maxW="1440px"
+      m="auto"
     >
       <Image src="/images/logo.png" />
     </Flex>
