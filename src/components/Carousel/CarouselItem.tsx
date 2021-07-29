@@ -1,37 +1,55 @@
+import { SwiperSlide } from "swiper/react";
 import { Image } from "@chakra-ui/image";
-import { Flex, Text, FlexProps } from "@chakra-ui/layout";
+import { Flex, Text } from "@chakra-ui/layout";
+import { useRouter } from "next/router";
 
-interface ItemProps extends FlexProps {
+interface ItemProps extends SwiperSlide {
   title: string;
   subtitle: string;
   image: string;
+  link?: string;
 }
 
-export function CarouselItem({ title, subtitle, image, ...rest }: ItemProps) {
+export function CarouselItem({
+  title,
+  subtitle,
+  image,
+  link,
+  ...rest
+}: ItemProps) {
+  const router = useRouter();
+
+  function redirect() {
+    router.push(link);
+  }
+
   return (
-    <Flex h="100%" w="100%" {...rest}>
-      <Image
-        src={image}
-        position="absolute"
-        top="0"
-        w="100%"
-        h="100%"
-        zIndex="0"
-      />
-      <Text
-        color="gray.100"
-        fontWeight="600"
-        fontSize="48"
-        zIndex="1"
-        mx="auto"
-        my="auto"
-        textAlign="center"
-      >
-        {title}
-        <Text fontSize="24" color="gray.200">
-          {subtitle}
+    <SwiperSlide onClick={redirect} {...rest}>
+      <Flex h="100%" w="100%">
+        <Image
+          src={image}
+          position="absolute"
+          top="0"
+          w="100%"
+          h="100%"
+          zIndex="0"
+        />
+        <Text
+          color="gray.100"
+          fontWeight="600"
+          fontSize="48"
+          zIndex="1"
+          mx="auto"
+          my="auto"
+          textAlign="center"
+          cursor={link ? "pointer" : "default"}
+        >
+          {title}
+          <Text fontSize="24" color="gray.200">
+            {subtitle}
+          </Text>
         </Text>
-      </Text>
-    </Flex>
+      </Flex>
+    </SwiperSlide>
   );
 }
