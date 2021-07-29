@@ -42,7 +42,7 @@ export function CarouselItem({
           mx="auto"
           my="auto"
           textAlign="center"
-          cursor="pointer"
+          cursor={link ? "pointer" : "default"}
         >
           {title}
           <Text fontSize="24" color="gray.200">
